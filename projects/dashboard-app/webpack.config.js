@@ -11,11 +11,12 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "dashboardApp",
-    publicPath: "auto"
+    publicPath: "auto",
+    scriptType: "text/javascript"
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -26,31 +27,30 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
 
-        // For remotes (please adjust)
-        // name: "dashboardApp",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './projects/dashboard-app/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        // remotes: {
-        //     "hostApp": "http://localhost:4200/remoteEntry.js",
-        //     "crudApp": "http://localhost:4200/remoteEntry.js",
+      // For remotes (please adjust)
+      name: "dashboardApp",
+      filename: "remoteEntry.js",
+      exposes: {
+        './DashboardModule': './projects/dashboard-app/src/app/dashboard/dashboard.module.ts',
+      },
 
-        // },
+      // For hosts (please adjust)
+      // remotes: {
+      //     "hostApp": "http://localhost:4200/remoteEntry.js",
+      //     "crudApp": "http://localhost:4200/remoteEntry.js",
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      // },
 
-          ...sharedMappings.getDescriptors()
-        })
-        
+      shared: share({
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+
+        ...sharedMappings.getDescriptors()
+      })
+
     }),
     sharedMappings.getPlugin()
   ],
