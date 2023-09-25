@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { CrudModule } from './crud/crud.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,6 +14,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent
   ],
   imports: [
+    BrowserModule,
     AppRoutingModule,
     CrudModule,
     HttpClientModule,

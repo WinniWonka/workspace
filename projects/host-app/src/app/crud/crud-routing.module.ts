@@ -6,7 +6,7 @@ import { IndexComponent } from './index/index.component';
 import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'crud/index', pathMatch: 'full' },
+  { path: 'crud', redirectTo: 'crud/index', pathMatch: 'full' },
   { path: 'crud/index', component: IndexComponent },
   { path: 'crud/:postId/view', component: ViewComponent },
   { path: 'crud/create', component: CreateComponent },

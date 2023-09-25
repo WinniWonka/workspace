@@ -3,17 +3,17 @@
 
     <a href="#" routerLink="/crud/index" class="btn btn-primary">Back</a>
 
-    <div>
+    <div *ngIf="post">
         <strong>ID:</strong>
         <p>{{ post.id }}</p>
     </div>
 
-    <div>
+    <div *ngIf="post">
         <strong>Title:</strong>
         <p>{{ post.title }}</p>
     </div>
 
-    <div>
+    <div *ngIf="post">
         <strong>Body:</strong>
         <p>{{ post.body }}</p>
     </div>
